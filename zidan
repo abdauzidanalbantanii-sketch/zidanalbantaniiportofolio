@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdau Zidane Al-Bantani | Portofolio & Estimator Konstruksi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#f59e0b', // Amber/Gold color for construction vibe
+                        dark: '#0f172a',    // Slate 900
+                        darker: '#020617',  // Slate 950
+                        card: '#1e293b',    // Slate 800
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #020617;
+            color: #f8fafc;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f59e0b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d97706;
+        }
+
+        /* Fade-in Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Timeline styling */
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            background-color: #f59e0b;
+            border-radius: 50%;
+            position: absolute;
+            left: -8px;
+            top: 24px;
+            box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+        }
+        
+        /* Hover Effects */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.2);
+        }
+
+        /* Pulse ring animation for floating button */
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.5; }
+        }
+        .pulse-whatsapp {
+            animation: pulse-ring 2s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary selection:text-darker">
+
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#home" class="text-2xl font-bold text-white tracking-wider">
+                        ZIDANE<span class="text-primary">.</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-6 items-center">
+                    <a href="#about" class="text-gray-300 hover:text-primary transition-colors text-sm font-medium uppercase tracking-wide">Tentang</a>
+                    <a href="#education" class="text-gray-300 hover:text-primary transition-colors text-sm font-medium uppercase tracking-wide">Pendidikan</a>
+                    <a href="#experience" class="text-gray-300 hover:text-primary transition-colors text-sm font-medium uppercase tracking-wide">Pengalaman</a>
+                    <a href="#skills" class="text-gray-300 hover:text-primary transition-colors text-sm font-medium uppercase tracking-wide">Keahlian</a>
+                    <a href="#projects" class="text-gray-300 hover:text-primary transition-colors text-sm font-medium uppercase tracking-wide">Proyek</a>
+                    <a href="#calculator" class="text-gray-300 hover:text-primary transition-colors text-sm font-medium uppercase tracking-wide flex items-center gap-1"><i class="fas fa-calculator text-primary"></i> Estimator</a>
+                    <a href="#contact" class="px-5 py-2 rounded-full bg-primary text-darker font-semibold hover:bg-yellow-400 transition-colors">Kontak</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark border-t border-gray-800">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-primary hover:bg-gray-800 rounded-md">Tentang</a>
+                <a href="#education" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-primary hover:bg-gray-800 rounded-md">Pendidikan</a>
+                <a href="#experience" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-primary hover:bg-gray-800 rounded-md">Pengalaman</a>
+                <a href="#skills" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-primary hover:bg-gray-800 rounded-md">Keahlian</a>
+                <a href="#projects" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-primary hover:bg-gray-800 rounded-md">Proyek</a>
+                <a href="#calculator" class="block px-3 py-2 text-base font-medium text-gray-300 hover:text-primary hover:bg-gray-800 rounded-md">Kalkulator Estimasi</a>
+                <a href="#contact" class="block px-3 py-2 text-base font-medium text-primary hover:text-yellow-400">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden flex items-center min-h-screen">
+        <!-- Background Decoration -->
+        <div class="absolute top-1/4 -right-64 w-96 h-96 bg-primary rounded-full mix-blend-multiply filter blur-[128px] opacity-20"></div>
+        <div class="absolute bottom-1/4 -left-64 w-96 h-96 bg-blue-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-20"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                
+                <!-- Text Content -->
+                <div class="flex-1 text-center lg:text-left fade-in">
+                    <!-- Animasi Typewriter -->
+                    <div class="h-6 mb-3 flex items-center justify-center lg:justify-start">
+                        <p id="typewriter" class="text-primary font-medium tracking-widest uppercase text-sm inline-block"></p>
+                        <span class="text-primary text-sm font-medium animate-pulse ml-[2px] -mt-[2px] text-lg">|</span>
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6">
+                        Halo, Saya <br/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-yellow-200">Abdau Zidane Al-Bantani</span>
+                    </h1>
+                    <p class="text-gray-400 text-lg sm:text-xl mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        Saya adalah mahasiswa S1 Sistem Informasi di Universitas Pamulang, yang terus belajar untuk memahami dan menguasai era digital di masa depan.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#projects" class="px-8 py-3 rounded-full bg-primary text-darker font-bold hover:bg-yellow-400 transition-colors shadow-[0_0_15px_rgba(245,158,11,0.4)]">
+                            Lihat Proyek
+                        </a>
+                        <a href="#calculator" class="px-8 py-3 rounded-full bg-transparent border-2 border-primary text-primary font-bold hover:bg-primary/10 transition-colors">
+                            <i class="fas fa-calculator mr-2"></i> Hitung Estimasi
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Image / Photo -->
+                <div class="flex-1 flex justify-center fade-in delay-200">
+                    <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
+                        <div class="absolute inset-0 border-2 border-primary rounded-3xl transform rotate-6 scale-105 transition-transform duration-500 hover:rotate-12"></div>
+                        <img src="zidan.jpg" alt="Abdau Zidane" class="relative z-10 w-full h-full object-cover rounded-3xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-500 border border-gray-700">
+                        
+                        <!-- Floating Badge -->
+                        <div class="absolute -bottom-6 -left-6 z-20 bg-card p-4 rounded-xl border border-gray-700 shadow-xl flex items-center gap-3 animate-bounce" style="animation-duration: 3s;">
+                            <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                                <i class="fas fa-hard-hat text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400">Fokus Pada</p>
+                                <p class="text-sm font-bold text-white">Mutu & K3</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl font-bold text-white uppercase tracking-wider mb-2">Tentang Saya</h2>
+                <div class="h-1 w-20 bg-primary mx-auto rounded-full"></div>
+            </div>
+
+            <div class="bg-card rounded-2xl p-8 lg:p-12 border border-gray-800 shadow-xl fade-in relative overflow-hidden">
+                <!-- Quote Icon Watermark -->
+                <i class="fas fa-quote-left absolute -top-4 -left-4 text-8xl text-gray-700 opacity-20"></i>
+                
+                <p class="text-gray-300 text-lg leading-relaxed text-justify relative z-10">
+                    Saat ini, saya sedang menempuh pendidikan sarjana S1 Sistem Informasi di <span class="text-primary font-semibold">Universitas Pamulang, Serang, Banten</span> dan aktif bekerja sebagai konsultan pengawas proyek konstruksi. Saya juga merupakan alumni dari <span class="text-primary font-semibold">SMKN 2 Kota Serang</span>.
+                    <br><br>
+                    Sejalan dengan studi teknologi informasi saya, saya memiliki dedikasi tinggi untuk mempelajari bidang <span class="text-primary font-semibold">digital marketing dan kewirausahaan (entrepreneurship)</span>. Saya percaya bahwa pemahaman mendalam tentang strategi pemasaran modern serta mentalitas bisnis sangat penting untuk menciptakan peluang inovatif dan sukses di era transformasi digital masa depan.
+                    <br><br>
+                    Dalam pekerjaan konstruksi, saya selalu berkomitmen untuk memastikan setiap tahapan proyek berjalan sesuai dengan spesifikasi teknis, standar mutu, dan garis waktu yang telah ditetapkan. Saya berfokus pada integrasi manajemen proyek teknis dengan penerapan Keselamatan dan Kesehatan Kerja (K3) yang ketat di lapangan.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="py-20 bg-darker">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl font-bold text-white uppercase tracking-wider mb-2">Riwayat Pendidikan</h2>
+                <div class="h-1 w-20 bg-primary mx-auto rounded-full"></div>
+            </div>
+
+            <div class="max-w-4xl mx-auto relative border-l-2 border-gray-700 ml-4 sm:ml-auto">
+                
+                <!-- MI -->
+                <div class="mb-12 pl-8 relative fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-card p-6 rounded-xl border border-gray-800 hover-lift">
+                        <span class="inline-block px-3 py-1 bg-gray-800 text-primary text-sm rounded-full mb-3 font-medium">2013 - 2018</span>
+                        <h3 class="text-xl font-bold text-white mb-1">Sekolah Dasar Madrasah Ibtidaiyah (MI) Al-Ikhsan</h3>
+                        <p class="text-gray-400 text-sm mb-4"><i class="fas fa-map-marker-alt mr-2"></i>Taman Ciruas Permai (TCP), Kab. Serang</p>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Lembaga pendidikan dasar yang mengintegrasikan kurikulum nasional dengan pendidikan berbasis agama Islam. Fokus utama pada pencapaian akademik umum, pembentukan karakter, akhlak mulia, dan pemahaman dasar keagamaan.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- SMP -->
+                <div class="mb-12 pl-8 relative fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-card p-6 rounded-xl border border-gray-800 hover-lift">
+                        <span class="inline-block px-3 py-1 bg-gray-800 text-primary text-sm rounded-full mb-3 font-medium">2018 - 2021</span>
+                        <h3 class="text-xl font-bold text-white mb-1">SMP Islam Tirtayasa</h3>
+                        <p class="text-gray-400 text-sm mb-4"><i class="fas fa-map-marker-alt mr-2"></i>Pakupatan, Kota Serang (Samping Kampus Untirta)</p>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Berada di lingkungan akademis yang dinamis, memadukan kurikulum pendidikan nasional (Kemendikbud) dengan penguatan nilai-nilai religiusitas Islam untuk mencetak generasi cerdas dan berakhlak mulia.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- SMA/SMK -->
+                <div class="mb-12 pl-8 relative fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-card p-6 rounded-xl border border-gray-800 hover-lift">
+                        <span class="inline-block px-3 py-1 bg-gray-800 text-primary text-sm rounded-full mb-3 font-medium">2021 - 2024</span>
+                        <h3 class="text-xl font-bold text-white mb-1">Alumni SMKN 2 Kota Serang</h3>
+                        <p class="text-gray-400 text-sm mb-4"><i class="fas fa-graduation-cap mr-2"></i>Desain Pemodelan dan Informasi Bangunan (DPIB)</p>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Mendalami penguasaan teknis dalam merancang, menggambar, dan menghitung estimasi biaya konstruksi bangunan dengan standar industri. Menjadi landasan kuat bagi karir pengawasan proyek.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- S1 -->
+                <div class="pl-8 relative fade-in">
+                    <div class="timeline-dot bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]"></div>
+                    <div class="bg-gradient-to-r from-card to-gray-800 p-6 rounded-xl border border-blue-500/30 hover-lift relative overflow-hidden">
+                        <div class="absolute -right-4 -bottom-4 text-blue-500/10 text-6xl"><i class="fas fa-laptop-code"></i></div>
+                        <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-400 text-sm rounded-full mb-3 font-medium animate-pulse">Sedang Menempuh Pendidikan</span>
+                        <h3 class="text-xl font-bold text-white mb-1">S1 Sistem Informasi</h3>
+                        <p class="text-gray-400 text-sm mb-4"><i class="fas fa-university mr-2"></i>Universitas Pamulang, Serang Banten</p>
+                        <p class="text-gray-400 text-sm leading-relaxed relative z-10">
+                            Mengembangkan keahlian di bidang teknologi informasi untuk mengintegrasikan sistem manajemen proyek konstruksi yang lebih efisien dan modern berbasis data.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-20 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl font-bold text-white uppercase tracking-wider mb-2">Pengalaman Kerja</h2>
+                <div class="h-1 w-20 bg-primary mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <!-- PT Cakra -->
+                <div class="bg-card rounded-2xl p-8 border border-gray-800 hover:border-primary/50 transition-colors fade-in hover-lift">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">PT. Cakra Konstruksi</h3>
+                            <p class="text-primary font-medium mt-1">Administrasi Pengawasan Proyek</p>
+                        </div>
+                        <div class="mt-3 sm:mt-0 px-4 py-2 bg-gray-800 rounded-lg text-sm text-gray-300 w-fit">
+                            <i class="far fa-calendar-alt mr-2"></i>Agt 2024 - Jan 2025
+                        </div>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-400 mb-6">
+                        <i class="fas fa-map-marker-alt mr-2 text-primary"></i> Talaga Bestari, Tangerang
+                    </div>
+                    <p class="text-gray-400 leading-relaxed text-sm">
+                        Bertanggung jawab menjembatani koordinasi teknis lapangan dengan manajemen kantor pusat. Menyeimbangkan pemahaman teknis konstruksi (berbasis desain pembangunan) dengan ketelitian manajemen dokumen. Memastikan proyek berjalan sesuai jadwal, anggaran, dan standar kualitas perusahaan.
+                    </p>
+                </div>
+
+                <!-- PT Sinar Ampel -->
+                <div class="bg-card rounded-2xl p-8 border border-primary/30 shadow-[0_0_20px_rgba(245,158,11,0.05)] hover:border-primary/80 transition-colors fade-in hover-lift relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-primary text-darker text-xs font-bold px-3 py-1 rounded-bl-lg z-10">Pekerjaan Saat Ini</div>
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">PT. Sinar Ampel</h3>
+                            <p class="text-primary font-medium mt-1">Pengawas Proyek / Konsultan Pengawas</p>
+                        </div>
+                        <div class="mt-3 sm:mt-0 px-4 py-2 bg-primary/10 rounded-lg text-sm text-primary w-fit border border-primary/20">
+                            <i class="far fa-calendar-alt mr-2"></i>April 2025 - Sekarang
+                        </div>
+                    </div>
+                    <div class="flex items-center text-sm text-gray-400 mb-6">
+                        <i class="fas fa-map-marker-alt mr-2 text-primary"></i> Serang, Banten
+                    </div>
+                    <p class="text-gray-400 leading-relaxed text-sm">
+                        Memegang tanggung jawab penuh dalam mengawal, memeriksa, dan memastikan proyek infrastruktur pemerintah & swasta berjalan sesuai spesifikasi teknis, standar kualitas, dan timeline. Menuntut keahlian analitis, pembacaan detail gambar kerja, serta ketegasan keputusan di lapangan.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 bg-darker">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl font-bold text-white uppercase tracking-wider mb-2">Keahlian Utama</h2>
+                <div class="h-1 w-20 bg-primary mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Komunikasi -->
+                <div class="bg-card p-8 rounded-2xl text-center border border-gray-800 hover:border-gray-600 transition-all hover-lift fade-in group">
+                    <div class="w-20 h-20 mx-auto bg-gray-800 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
+                        <i class="fas fa-comments text-3xl text-primary group-hover:text-darker"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Komunikasi</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Memiliki kemampuan komunikasi multilevel yang kuat. Mampu menjembatani koordinasi antara pemilik proyek, manajemen, dan pekerja lapangan untuk memastikan proyek sesuai target mutu, waktu, dan biaya.
+                    </p>
+                </div>
+
+                <!-- Kerjasama -->
+                <div class="bg-card p-8 rounded-2xl text-center border border-gray-800 hover:border-gray-600 transition-all hover-lift fade-in group delay-100">
+                    <div class="w-20 h-20 mx-auto bg-gray-800 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
+                        <i class="fas fa-users-cog text-3xl text-primary group-hover:text-darker"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Kerjasama Tim</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Terbiasa berkolaborasi dengan kontraktor, mandor, surveyor, dan owner. Fokus menjadi mitra kerja yang solutif saat menghadapi kendala teknis agar proyek selesai dengan mutu terbaik.
+                    </p>
+                </div>
+
+                <!-- Problem Solving -->
+                <div class="bg-card p-8 rounded-2xl text-center border border-gray-800 hover:border-gray-600 transition-all hover-lift fade-in group delay-200">
+                    <div class="w-20 h-20 mx-auto bg-gray-800 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
+                        <i class="fas fa-puzzle-piece text-3xl text-primary group-hover:text-darker"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Problem Solving</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Solutif dan cekatan dalam dinamika lapangan. Menganalisis kendala teknis (perubahan tanah, deviasi jadwal) secara cepat dan merumuskan solusi tanpa mengorbankan mutu bangunan & deadline.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl font-bold text-white uppercase tracking-wider mb-2">Riwayat Proyek</h2>
+                <div class="h-1 w-20 bg-primary mx-auto rounded-full"></div>
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Pengalaman langsung mengawasi dan memberikan solusi nyata pada berbagai proyek infrastruktur strategis.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                
+                <!-- Project 1 -->
+                <div class="bg-card rounded-xl overflow-hidden border border-gray-800 group hover:border-primary/50 transition-all fade-in flex flex-col shadow-lg">
+                    <div class="w-full h-48 sm:h-56 overflow-hidden relative">
+                        <img src="DRAINASE.jpeg" alt="Drainase Cisoka" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-card to-transparent"></div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-xs font-bold px-3 py-1 bg-gray-800 text-gray-300 rounded-full border border-gray-700">Okt 2024</span>
+                            <span class="text-xs font-bold text-primary"><i class="fas fa-building mr-1"></i> PT Cakra Konstruksi</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">Proyek Drainase Cisoka</h3>
+                        <p class="text-sm text-gray-500 mb-4"><i class="fas fa-map-pin mr-2"></i>Cisoka, Balaraja</p>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Pengawasan perbaikan menyeluruh pada saluran air warga yang terhambat dan menyebabkan banjir. Proyek bertujuan mengembalikan fungsi drainase dengan baik dan lancar.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-card rounded-xl overflow-hidden border border-gray-800 group hover:border-primary/50 transition-all fade-in flex flex-col shadow-lg">
+                    <div class="w-full h-48 sm:h-56 overflow-hidden relative">
+                        <img src="DRAINASE 2.jpeg" alt="Drainase Gunung Kaler" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-card to-transparent"></div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-xs font-bold px-3 py-1 bg-gray-800 text-gray-300 rounded-full border border-gray-700">Nov 2024</span>
+                            <span class="text-xs font-bold text-primary"><i class="fas fa-building mr-1"></i> PT Cakra Konstruksi</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">Proyek Drainase Gunung Kaler</h3>
+                        <p class="text-sm text-gray-500 mb-4"><i class="fas fa-map-pin mr-2"></i>Gunung Kaler, Balaraja</p>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Mengawasi proyek drainase di area rawan banjir akibat tersumbatnya saluran air. Memastikan perbaikan struktural agar aliran air kembali lancar dan aman.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-card rounded-xl overflow-hidden border border-gray-800 group hover:border-primary/50 transition-all fade-in flex flex-col shadow-lg">
+                    <div class="w-full h-48 sm:h-56 overflow-hidden relative">
+                        <img src="JLN 2.jpeg" alt="Rekonstruksi Jalan Mancak" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-card to-transparent"></div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-xs font-bold px-3 py-1 bg-gray-800 text-gray-300 rounded-full border border-gray-700">April 2025</span>
+                            <span class="text-xs font-bold text-primary"><i class="fas fa-building mr-1"></i> PT Sinar Ampel</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">Rekonstruksi Jalan Mancak</h3>
+                        <p class="text-sm text-gray-500 mb-4"><i class="fas fa-map-pin mr-2"></i>Mancak, Cilegon</p>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Pengawasan proyek rekonstruksi jalan yang rusak parah. Penanganan segera difokuskan pada spesifikasi material yang kuat demi keselamatan dan kenyamanan mobilitas pengguna jalan.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="bg-card rounded-xl overflow-hidden border border-gray-800 group hover:border-primary/50 transition-all fade-in flex flex-col shadow-lg">
+                    <div class="w-full h-48 sm:h-56 overflow-hidden relative">
+                        <img src="JALAN 1.jpeg" alt="Perbaikan Jalan Karawaci" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-card to-transparent"></div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-xs font-bold px-3 py-1 bg-gray-800 text-gray-300 rounded-full border border-gray-700">Proyek Lanjutan</span>
+                            <span class="text-xs font-bold text-primary"><i class="fas fa-building mr-1"></i> PT Sinar Ampel</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">Perhitungan Volume & Kekuatan Jalan</h3>
+                        <p class="text-sm text-gray-500 mb-4"><i class="fas fa-map-pin mr-2"></i>Karawaci, Tangerang</p>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Mengawasi konstruksi perbaikan jalan menyeluruh merespon keluhan warga. Melibatkan perhitungan teknis volume dan uji kekuatan jalan untuk memastikan daya tahan jangka panjang.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="calculator" class="py-20 bg-darker">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in">
+                <span class="text-primary font-bold text-sm tracking-wider uppercase bg-primary/10 px-4 py-1.5 rounded-full border border-primary/20"><i class="fas fa-calculator mr-2"></i>Fitur Eksklusif</span>
+                <h2 class="text-3xl font-bold text-white uppercase tracking-wider mt-4 mb-2">Estimator Material Lapangan</h2>
+                <div class="h-1 w-20 bg-primary mx-auto rounded-full"></div>
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Gunakan alat interaktif ini untuk menghitung kebutuhan dasar aspal dan beton di lokasi pengerjaan jalan atau pondasi.</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto bg-card rounded-3xl border border-gray-800 p-6 sm:p-10 shadow-2xl fade-in">
+                <!-- Navigation Tabs -->
+                <div class="flex border-b border-gray-800 mb-8 overflow-hidden rounded-xl bg-dark/50 p-1">
+                    <button id="tab-asphalt" class="flex-1 py-3 text-center text-sm sm:text-base font-bold rounded-lg transition-all text-darker bg-primary" onclick="switchCalcTab('asphalt')">
+                        <i class="fas fa-road mr-2"></i>Estimasi Aspal (Tonase)
+                    </button>
+                    <button id="tab-concrete" class="flex-1 py-3 text-center text-sm sm:text-base font-bold rounded-lg transition-all text-gray-400 hover:text-white" onclick="switchCalcTab('concrete')">
+                        <i class="fas fa-cubes mr-2"></i>Estimasi Beton (Kubikasi)
+                    </button>
+                </div>
+
+                <!-- Input & Output Container -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    
+                    <!-- INPUTS FORM -->
+                    <div class="space-y-6 bg-dark/40 p-6 rounded-2xl border border-gray-800/60">
+                        <h4 class="text-lg font-bold text-white border-b border-gray-800 pb-3 flex items-center gap-2">
+                            <i class="fas fa-sliders-h text-primary"></i> Parameter Dimensi
+                        </h4>
+                        
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Panjang Bidang (Meter)</label>
+                            <div class="relative">
+                                <input type="number" id="calc-length" value="100" min="1" class="w-full bg-dark border-2 border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary font-bold" oninput="calculateMaterial()">
+                                <span class="absolute right-4 top-3.5 text-gray-500 text-sm">m</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Lebar Bidang (Meter)</label>
+                            <div class="relative">
+                                <input type="number" id="calc-width" value="4" min="0.1" step="0.1" class="w-full bg-dark border-2 border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary font-bold" oninput="calculateMaterial()">
+                                <span class="absolute right-4 top-3.5 text-gray-500 text-sm">m</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Tebal Hamparan / Selimut (Centimeter)</label>
+                            <div class="relative">
+                                <input type="number" id="calc-thickness" value="5" min="1" step="0.5" class="w-full bg-dark border-2 border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary font-bold" oninput="calculateMaterial()">
+                                <span class="absolute right-4 top-3.5 text-gray-500 text-sm">cm</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OUTPUTS PREVIEW -->
+                    <div class="h-full flex flex-col justify-between space-y-6">
+                        <div class="bg-gradient-to-br from-primary/10 to-transparent border border-primary/20 p-6 rounded-2xl text-center flex-grow flex flex-col justify-center">
+                            <p class="text-xs text-gray-400 uppercase font-bold tracking-widest mb-2">Total Volume Terhitung</p>
+                            <p class="text-5xl font-extrabold text-white" id="out-volume">20.00</p>
+                            <p class="text-sm text-primary font-semibold mt-1">Meter Kubik (m³)</p>
+                        </div>
+
+                        <!-- Asphalt Output -->
+                        <div id="out-asphalt-box" class="bg-card p-6 rounded-2xl border border-gray-800">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-sm text-gray-400 font-medium">Kebutuhan Aspal (Density: 2.3 ton/m³):</span>
+                            </div>
+                            <div class="flex items-baseline gap-2">
+                                <span class="text-3xl font-extrabold text-primary" id="out-asphalt-weight">46.00</span>
+                                <span class="text-xl text-white font-bold">Ton</span>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-2 italic">*Hasil di atas adalah estimasi kasaran lapangan berdasarkan densitas aspal Hotmix padat standar.</p>
+                        </div>
+
+                        <!-- Concrete Output -->
+                        <div id="out-concrete-box" class="bg-card p-6 rounded-2xl border border-gray-800 hidden space-y-4">
+                            <span class="text-sm text-gray-400 font-medium block">Kebutuhan Material Campuran (Rasio Standar 1:2:3):</span>
+                            
+                            <div class="grid grid-cols-3 gap-2">
+                                <div class="bg-dark/60 p-3 rounded-lg text-center">
+                                    <span class="text-xl font-bold text-white block" id="out-semen">164</span>
+                                    <span class="text-[10px] text-gray-500 uppercase tracking-wide block">Semen (Zak 50kg)</span>
+                                </div>
+                                <div class="bg-dark/60 p-3 rounded-lg text-center">
+                                    <span class="text-xl font-bold text-white block" id="out-pasir">10.8</span>
+                                    <span class="text-[10px] text-gray-500 uppercase tracking-wide block">Pasir (m³)</span>
+                                </div>
+                                <div class="bg-dark/60 p-3 rounded-lg text-center">
+                                    <span class="text-xl font-bold text-white block" id="out-kerikil">16.4</span>
+                                    <span class="text-[10px] text-gray-500 uppercase tracking-wide block">Kerikil (m³)</span>
+                                </div>
+                            </div>
+                            <p class="text-[10px] text-gray-500 italic mt-2">*Perhitungan di atas menggunakan estimasi konversi praktis campuran beton konvensional mutu sedang.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-dark relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-dark to-slate-950 z-0"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12 fade-in">
+                <h2 class="text-3xl font-bold text-white uppercase tracking-wider mb-2">Hubungi Saya</h2>
+                <div class="h-1 w-20 bg-primary mx-auto rounded-full"></div>
+                <p class="text-gray-400 mt-4 max-w-xl mx-auto">Untuk kebutuhan konsultasi teknis, pengawasan proyek, atau diskusi peluang kerjasama, silakan isi formulir atau hubungi saya langsung.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch max-w-5xl mx-auto fade-in">
+                
+                <!-- Contact Methods & Icons (Left 5-Columns) -->
+                <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
+                    <div class="bg-card p-8 rounded-3xl border border-gray-800 flex-grow flex flex-col justify-center">
+                        <h4 class="text-xl font-bold text-white mb-6">Informasi Kontak</h4>
+                        
+                        <div class="space-y-6">
+                            <!-- WhatsApp Group/Icon link -->
+                            <a href="https://wa.me/6283870181323" target="_blank" class="flex items-center gap-4 p-4 rounded-2xl bg-dark/50 hover:bg-emerald-500/10 border border-transparent hover:border-emerald-500/20 transition-all group">
+                                <div class="w-12 h-12 bg-emerald-500 text-white rounded-xl flex items-center justify-center text-2xl shadow-lg transition-transform group-hover:scale-110">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500">WhatsApp Aktif</p>
+                                    <p class="text-sm font-bold text-gray-200 group-hover:text-emerald-400 transition-colors">0838-7018-1323</p>
+                                </div>
+                            </a>
+
+                            <!-- Email Icon link -->
+                            <a href="mailto:abdauzidanalbantanii@gmail.com" class="flex items-center gap-4 p-4 rounded-2xl bg-dark/50 hover:bg-red-500/10 border border-transparent hover:border-red-500/20 transition-all group">
+                                <div class="w-12 h-12 bg-red-500 text-white rounded-xl flex items-center justify-center text-xl shadow-lg transition-transform group-hover:scale-110">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500">E-mail Profesional</p>
+                                    <p class="text-xs sm:text-sm font-bold text-gray-200 group-hover:text-red-400 transition-colors break-all">abdauzidanalbantanii@gmail.com</p>
+                                </div>
+                            </a>
+
+                            <!-- Maps Address -->
+                            <a href="https://www.google.com/maps/search/?api=1&query=Taman+Ciruas+Permai+Serang+Banten" target="_blank" class="flex items-center gap-4 p-4 rounded-2xl bg-dark/50 hover:bg-blue-500/10 border border-transparent hover:border-blue-500/20 transition-all group">
+                                <div class="w-12 h-12 bg-blue-500 text-white rounded-xl flex items-center justify-center text-xl shadow-lg transition-transform group-hover:scale-110">
+                                    <i class="fas fa-map-location-dot"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500">Alamat Tempat Tinggal</p>
+                                    <p class="text-sm font-bold text-gray-200 group-hover:text-blue-400 transition-colors">Taman Ciruas Permai, Serang, Banten</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Contact Redirection Form (Right 7-Columns) -->
+                <div class="lg:col-span-7">
+                    <div class="bg-card p-6 sm:p-8 rounded-3xl border border-gray-800 h-full flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                                <i class="fas fa-paper-plane text-primary"></i> Hubungi Instan via WhatsApp
+                            </h4>
+                            <p class="text-xs text-gray-400 mb-6">Isi data di bawah ini untuk mengirim pesan WhatsApp berformat rapi langsung kepada saya.</p>
+                            
+                            <form id="contact-form" class="space-y-4">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Nama Lengkap</label>
+                                        <input type="text" id="form-name" placeholder="Contoh: Budi Santoso" class="w-full bg-dark border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary text-sm" required>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Perusahaan / Instansi</label>
+                                        <input type="text" id="form-company" placeholder="Contoh: PT. Maju Jaya" class="w-full bg-dark border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary text-sm">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Perihal / Kebutuhan</label>
+                                    <input type="text" id="form-subject" placeholder="Contoh: Penawaran Pengawasan Jalan / Konstruksi" class="w-full bg-dark border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary text-sm" required>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Pesan Lengkap</label>
+                                    <textarea id="form-message" rows="4" placeholder="Tuliskan detail pekerjaan atau kebutuhan diskusi Anda di sini..." class="w-full bg-dark border border-gray-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary text-sm" required></textarea>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Submit Buttons -->
+                        <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                            <button onclick="redirectToWhatsApp()" class="flex-1 py-3 px-6 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold flex items-center justify-center gap-2 shadow-lg transition-all active:scale-95">
+                                <i class="fab fa-whatsapp text-lg"></i> Kirim WhatsApp
+                            </button>
+                            <button onclick="redirectToEmail()" class="flex-1 py-3 px-6 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-300 font-semibold flex items-center justify-center gap-2 border border-gray-700 transition-all active:scale-95">
+                                <i class="fas fa-envelope"></i> Kirim via Email
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black py-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-gray-500 text-sm text-center md:text-left">
+                &copy; <script>document.write(new Date().getFullYear())</script> Abdau Zidane Al-Bantani. All rights reserved.
+            </p>
+            <div class="flex space-x-4">
+                <div class="text-gray-600 text-sm">Supervisor Lapangan & Konsultan Pengawas</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Widget Button -->
+    <a href="https://wa.me/6283870181323?text=Halo%20Zidane%20Al-Bantani%2C%20saya%20melihat%20portofolio%20Anda%20dan%20tertarik%20untuk%20berdiskusi%20mengenai%20proyek." 
+       target="_blank" 
+       class="fixed bottom-6 right-6 z-50 bg-emerald-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-[0_4px_20px_rgba(16,185,129,0.4)] hover:scale-110 active:scale-95 transition-transform"
+       title="Hubungi WhatsApp Langsung">
+        <i class="fab fa-whatsapp pulse-whatsapp"></i>
+    </a>
+
+    <!-- Custom Toast Notification Container -->
+    <div id="toast-container" class="fixed top-24 right-6 z-50 space-y-2 pointer-events-none"></div>
+
+    <script>
+        // Active calculator tab state
+        let currentCalcTab = 'asphalt';
+
+        // Tab Switching for Calculator
+        function switchCalcTab(tab) {
+            currentCalcTab = tab;
+            
+            const btnAsphalt = document.getElementById('tab-asphalt');
+            const btnConcrete = document.getElementById('tab-concrete');
+            const boxAsphalt = document.getElementById('out-asphalt-box');
+            const boxConcrete = document.getElementById('out-concrete-box');
+
+            if (tab === 'asphalt') {
+                btnAsphalt.classList.add('bg-primary', 'text-darker');
+                btnAsphalt.classList.remove('text-gray-400', 'hover:text-white');
+                btnConcrete.classList.remove('bg-primary', 'text-darker');
+                btnConcrete.classList.add('text-gray-400', 'hover:text-white');
+                boxAsphalt.classList.remove('hidden');
+                boxConcrete.classList.add('hidden');
+            } else {
+                btnConcrete.classList.add('bg-primary', 'text-darker');
+                btnConcrete.classList.remove('text-gray-400', 'hover:text-white');
+                btnAsphalt.classList.remove('bg-primary', 'text-darker');
+                btnAsphalt.classList.add('text-gray-400', 'hover:text-white');
+                boxConcrete.classList.remove('hidden');
+                boxAsphalt.classList.add('hidden');
+            }
+            calculateMaterial();
+        }
+
+        // Live material calculation function
+        function calculateMaterial() {
+            const length = parseFloat(document.getElementById('calc-length').value) || 0;
+            const width = parseFloat(document.getElementById('calc-width').value) || 0;
+            const thicknessCm = parseFloat(document.getElementById('calc-thickness').value) || 0;
+
+            // Convert thickness to meter
+            const thicknessM = thicknessCm / 100;
+            const volume = length * width * thicknessM;
+
+            // Update Volume Output
+            document.getElementById('out-volume').innerText = volume.toFixed(2);
+
+            if (currentCalcTab === 'asphalt') {
+                // Tonnage of asphalt (density of compacted hotmix asphalt ~2.3 tons per cubic meter)
+                const tonnage = volume * 2.3;
+                document.getElementById('out-asphalt-weight').innerText = tonnage.toFixed(2);
+            } else {
+                // Standard 1:2:3 Concrete Mix per cubic meter estimates (Concrete Class roughly K-175 / K-225)
+                // 1m3 requires: Cement ~ 326 kg (approx 8.2 bags of 40kg), Sand ~ 0.54 m3, Gravel ~ 0.82 m3
+                const semenBags = Math.round(volume * 8.2);
+                const pasirVol = (volume * 0.54).toFixed(1);
+                const kerikilVol = (volume * 0.82).toFixed(1);
+
+                document.getElementById('out-semen').innerText = semenBags;
+                document.getElementById('out-pasir').innerText = pasirVol;
+                document.getElementById('out-kerikil').innerText = kerikilVol;
+            }
+        }
+
+        // Custom non-blocking visual Toast Notification
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `p-4 rounded-xl shadow-lg border text-sm font-semibold flex items-center gap-2 transition-all duration-300 translate-x-12 opacity-0 pointer-events-auto ${
+                type === 'success' 
+                ? 'bg-emerald-950 text-emerald-400 border-emerald-800' 
+                : 'bg-amber-950 text-amber-400 border-amber-800'
+            }`;
+            
+            toast.innerHTML = `
+                <i class="${type === 'success' ? 'fas fa-circle-check' : 'fas fa-triangle-exclamation'}"></i>
+                <span>${message}</span>
+            `;
+
+            container.appendChild(toast);
+
+            // Trigger slide & fade-in animation
+            setTimeout(() => {
+                toast.classList.remove('translate-x-12', 'opacity-0');
+            }, 10);
+
+            // Destroy toast after 4 seconds
+            setTimeout(() => {
+                toast.classList.add('translate-x-12', 'opacity-0');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 4000);
+        }
+
+        // Interactive Redirection: WhatsApp
+        function redirectToWhatsApp() {
+            const name = document.getElementById('form-name').value.trim();
+            const company = document.getElementById('form-company').value.trim();
+            const subject = document.getElementById('form-subject').value.trim();
+            const message = document.getElementById('form-message').value.trim();
+
+            if (!name || !subject || !message) {
+                showToast("Harap isi formulir utama (Nama, Perihal, dan Pesan)", "warning");
+                return;
+            }
+
+            const companyStr = company ? ` dari ${company}` : '';
+            const formatMessage = `Halo Zidane Al-Bantani,\n\nSaya *${name}*${companyStr}.\n\n*Perihal:* ${subject}\n\n*Pesan:*\n${message}`;
+            
+            const encodedText = encodeURIComponent(formatMessage);
+            const waUrl = `https://wa.me/6283870181323?text=${encodedText}`;
+            
+            showToast("Mengalihkan Anda ke WhatsApp...");
+            setTimeout(() => {
+                window.open(waUrl, '_blank');
+            }, 800);
+        }
+
+        // Interactive Redirection: Email
+        function redirectToEmail() {
+            const name = document.getElementById('form-name').value.trim();
+            const company = document.getElementById('form-company').value.trim();
+            const subject = document.getElementById('form-subject').value.trim();
+            const message = document.getElementById('form-message').value.trim();
+
+            if (!name || !subject || !message) {
+                showToast("Harap isi formulir utama (Nama, Perihal, dan Pesan)", "warning");
+                return;
+            }
+
+            const companyStr = company ? ` dari ${company}` : '';
+            const mailtoUrl = `mailto:abdauzidanalbantanii@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("Halo Zidane,\n\nNama Saya: " + name + companyStr + "\n\nKebutuhan:\n" + message)}`;
+            
+            showToast("Membuka aplikasi Email Anda...");
+            setTimeout(() => {
+                window.location.href = mailtoUrl;
+            }, 800);
+        }
+
+        // Initialize Calculator default state
+        calculateMaterial();
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when link is clicked
+        const mobileLinks = menu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Navbar Background Change on Scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-darker/90', 'backdrop-blur-md', 'shadow-lg');
+                navbar.classList.remove('bg-transparent');
+            } else {
+                navbar.classList.remove('bg-darker/90', 'backdrop-blur-md', 'shadow-lg');
+                navbar.classList.add('bg-transparent');
+            }
+        });
+
+        // Initial check for navbar bg
+        if (window.scrollY > 50) {
+            navbar.classList.add('bg-darker/90', 'backdrop-blur-md', 'shadow-lg');
+        }
+
+        // Intersection Observer for Fade-in Animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Select all elements with fade-in class
+        const fadeElements = document.querySelectorAll('.fade-in');
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Typewriter Effect for Hero Subtitle
+        const typeTarget = document.getElementById('typewriter');
+        const typingTexts = [
+            "Supervisor Lapangan",
+            "Konsultan Pengawas",
+            "Mahasiswa Sistem Informasi"
+        ];
+        let typeTextIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeWriterLoop() {
+            const currentText = typingTexts[typeTextIndex];
+            
+            if (isDeleting) {
+                typeTarget.innerHTML = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typeTarget.innerHTML = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && charIndex === currentText.length) {
+                typeSpeed = 2000; 
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                typeTextIndex = (typeTextIndex + 1) % typingTexts.length;
+                typeSpeed = 500; 
+            }
+
+            setTimeout(typeWriterLoop, typeSpeed);
+        }
+
+        // Start typewriter on load
+        setTimeout(typeWriterLoop, 800);
+    </script>
+</body>
+</html>
